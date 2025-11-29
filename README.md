@@ -1,3 +1,5 @@
+# EduTrak
+
 ## 🚀 Funcionalidad Principal
 
 El sistema permite tomar las asistencias de los alumnos
@@ -11,7 +13,7 @@ Se encarga de manejar las peticiones, respuestas y lógica del backend.
 Facilita la creación del servidor, las rutas (endpoints) y el manejo de middlewares.
 
 - **SQLite3**  
-Base de datos liviana que guarda la información en un archivo local (`db.db`).  
+Base de datos liviana que guarda la información en un archivo local (`EduTrak.db`).  
 
 
 - **bcrypt**  
