@@ -1,12 +1,12 @@
 /* src/styles/Landing.css */
 :root {
-  --bg: #ffffff;
-  --primary: #07454e;
-  --secondary: #438791;
-  --accent: #00796b;
-  --positive: #558b2f;
-  --negative: #b71c1c;
-  --warning: #ff8f00;
+    --bg: #ffffff;
+    --primary: #07454e;
+    --secondary: #438791;
+    --accent: #00796b;
+    --positive: #558b2f;
+    --negative: #b71c1c;
+    --warning: #ff8f00;
 }
 
 /* CENTRAR TODO */
@@ -17,6 +17,22 @@
     align-items: center;
     background: var(--bg);
     padding: 20px;
+}
+
+.fade-down {
+    animation: fadeDown 0.7s ease forwards;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* TARJETA */
@@ -122,5 +138,13 @@ input {
 
     .login-form {
         width: 100%;
+    }
+
+    input {
+        align-items: center;
+    }
+
+    label {
+        align-items: center;
     }
 }
