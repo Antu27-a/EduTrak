@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../components/css/Landing.css";
-
-// IMPORTAR LAS IMÁGENES
+import "../components/Css/Landing.css";
 import gif1 from "../assets/img/gif1.gif";
 import gif2 from "../assets/img/gif2.gif";
 import gif3 from "../assets/img/gif3.gif";
 
 export default function Landing() {
+
   const images = [gif1, gif2, gif3];
 
   const [index, setIndex] = useState(0);
