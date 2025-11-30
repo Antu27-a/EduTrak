@@ -1,0 +1,80 @@
+:root {
+  --bg: #ffffff;
+  --primary: #07454e;
+  --secondary: #438791;
+  --accent: #00796b;
+  --positive: #558b2f;
+  --negative: #b71c1c;
+  --warning: #ff8f00;
+}
+
+.landing-container {
+  background-color: var(--bg);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel {
+  width: 80%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 14px;
+  margin-top: 50px;
+  position: relative;
+  border: 3px solid var(--primary);
+}
+
+.carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-controls {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  gap: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--secondary);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.carousel-dot.active {
+  background: var(--primary);
+}
+
+.presentation {
+  width: 80%;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.btn-login {
+  margin-top: 40px;
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background: var(--accent);
+}
