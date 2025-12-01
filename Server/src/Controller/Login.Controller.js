@@ -1,6 +1,7 @@
 const db= require ('../DataBase/db');
+const { EncriptarContraseña } = require('../Utils/PasswordHash');
 
-const RegistrarUsuarios=(req,res)=>{
+const RegistrarUsuarios=async(req,res)=>{
     try{
         const{email,contraseña,nombre,rol}=req.body;
         if(!email||!contraseña||!nombre||!rol){
@@ -18,8 +19,10 @@ const RegistrarUsuarios=(req,res)=>{
             }
         })
 
+        const hash= await EncriptarContraseña(contraseña);
+
         const query=`INSERT INTO Usuario (email,contraseña,nombre,rol) VALUES (?,?,?,?)`;
-        db.run(query,[email,contraseña,nombre,rol],(Error)=>{
+        db.run(query,[email,hash,nombre,rol],(Error)=>{
             if(Error){
                 console.error('Error al registrar el usuario 🤬', Error.message);
                 return res.status(404).json({Error:'Error al registrar el usuario 🤬'});
@@ -27,7 +30,7 @@ const RegistrarUsuarios=(req,res)=>{
                 return  res.status(201).json({
                     Mensaje:'Usuario registrado correctamente 👻',
                     ID: this.lastID,
-                    Usuario
+                    email
                 });
             }
         })
