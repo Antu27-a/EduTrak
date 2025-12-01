@@ -60,3 +60,34 @@
 .btn-login:hover {
   background: var(--accent);
 }
+
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(2, 32, 37, 0.7);
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 30%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.carousel button:first-of-type {
+  left: 20px;
+}
+
+.carousel button:last-of-type {
+  right: 20px;
+}
+
+.carousel button:hover {
+  background: #fff; 
+  color: black;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
