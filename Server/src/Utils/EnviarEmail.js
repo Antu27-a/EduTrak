@@ -25,3 +25,5 @@ async function EnviarCorreo(email, nombre, TokenEmail) {
     };
     await DatosEmail.sendMail(opciones);
 }
+
+module.exports={EnviarCorreo}
