@@ -1,70 +1,52 @@
-:root {
-  --bg: #ffffff;
-  --primary: #07454e;
-  --secondary: #438791;
-  --accent: #00796b;
-  --positive: #558b2f;
-  --negative: #b71c1c;
-  --warning: #ff8f00;
-}
-
 .landing-container {
   background-color: var(--bg);
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
 }
 
 .carousel {
-  width: 80%;
-  height: 300px;
+  width: 100%;
+  height: auto;
   overflow: hidden;
   border-radius: 14px;
-  margin-top: 50px;
+  margin-top: 30px;
   position: relative;
   border: 3px solid var(--primary);
+  display: flex;
+  justify-content: center;
 }
 
 .carousel img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  filter: contrast(110%) brightness(105%) saturate(120%);
+
 }
 
-.carousel-controls {
-  position: absolute;
-  bottom: 10px;
-  display: flex;
-  gap: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--secondary);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.carousel-dot.active {
-  background: var(--primary);
-}
-
-.presentation {
-  width: 80%;
+.text-section {
   margin-top: 30px;
   text-align: center;
-  font-size: 18px;
+
+}
+
+.text-section h1 {
+  font-size: 28px;
   color: var(--primary);
-  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.text-section p {
+  font-size: 22px;
+  color: #666;
 }
 
 .btn-login {
-  margin-top: 40px;
+  margin-top: 20px;
   background: var(--primary);
   color: #fff;
   padding: 12px 25px;
@@ -77,4 +59,35 @@
 
 .btn-login:hover {
   background: var(--accent);
+}
+
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(2, 32, 37, 0.7);
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 30%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.carousel button:first-of-type {
+  left: 20px;
+}
+
+.carousel button:last-of-type {
+  right: 20px;
+}
+
+.carousel button:hover {
+  background: #fff; 
+  color: black;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
 }

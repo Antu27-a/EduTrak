@@ -32,29 +32,38 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
 .logo {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: var(--text-light);
 }
 
-.logo svg {
-  color: var(--warning);
+.logo-img {
+  width: 40px;
+  /* tamaño pequeño y consistente */
+  height: 40px;
+  object-fit: contain;
+  /* mantiene proporciones */
 }
 
 .logo-text h2 {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
+  color: var(--primary);
   margin: 0;
-  letter-spacing: 0.5px;
 }
 
 .logo-text span {
-  font-size: 12px;
-  color: var(--text-muted);
+  font-size: 13px;
+  color: #666;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: 12px;
 }
 
 .sidebar-nav {
@@ -132,4 +141,77 @@
   background: var(--negative);
   border-color: var(--negative);
   color: var(--text-light);
+}
+
+/* Estilos para el modal de confirmación de cierre de sesión */
+.logout-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.logout-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 143, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logout-icon svg {
+  color: var(--warning);
+}
+
+.logout-modal-content p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.logout-modal-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.logout-modal-actions .btn-cancel {
+  padding: 12px 24px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.logout-modal-actions .btn-cancel:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+.logout-modal-actions .btn-logout-confirm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--negative);
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.logout-modal-actions .btn-logout-confirm:hover {
+  background: #8b1515;
 }

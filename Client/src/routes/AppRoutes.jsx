@@ -8,6 +8,13 @@ import Configuracion from "../Pages/Admin/Configuracion"
 import Login from "../Pages/Login"
 import Landing from "../Pages/Landing"
 
+
+import PreceptorLayout from "../components/layout/PreceptorLayout"
+import CursosAsignados from "../Pages/Preceptor/Cursos_asignados"
+import TomarAsistencia from "../Pages/Preceptor/Tomar_asistencia"
+import Historial from "../Pages/Preceptor/Historial"
+import PreceptorConfiguracion from "../Pages/Preceptor/Configuracion"
+
 export default function AppRoutes() {
     return (
         <Routes>
@@ -23,6 +30,16 @@ export default function AppRoutes() {
                 <Route path="alumnos" element={<Alumnos />} />
                 <Route path="cursos" element={<Cursos />} />
                 <Route path="configuracion" element={<Configuracion />} />
+            </Route>
+
+            <Route path="/preceptor" element={<PreceptorLayout />}>
+                <Route index element={<Navigate to="/preceptor/cursos" replace />} />
+                <Route path="cursos" element={<CursosAsignados />} />
+                <Route path="asistencia" element={<TomarAsistencia />} />
+                <Route path="asistencia/:cursoId" element={<TomarAsistencia />} />
+                <Route path="historial" element={<Historial />} />
+                <Route path="historial/:cursoId" element={<Historial />} />
+                <Route path="configuracion" element={<PreceptorConfiguracion />} />
             </Route>
 
             {/* Ruta 404 */}

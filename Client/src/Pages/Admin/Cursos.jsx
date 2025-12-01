@@ -83,7 +83,7 @@ export default function Cursos() {
                                     type="text"
                                     value={formData.nombre}
                                     onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                                    placeholder="Ej: 3ro A"
+                                    placeholder="Ej: 3ro A o 1°8"
                                 />
                             </div>
                         </div>

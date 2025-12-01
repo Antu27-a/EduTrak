@@ -19,7 +19,7 @@
   color: var(--secondary);
 } */
 
-.admin-layout {
+/* .admin-layout {
   display: flex;
   min-height: 100vh;
   background-color: #f5f7fa;
@@ -27,7 +27,6 @@
 
 .admin-main {
   flex: 1;
-  margin-left: 260px;
   padding: 0;
   overflow-y: auto;
 }
@@ -36,4 +35,4 @@
   .admin-main {
     margin-left: 0;
   }
-}
+} */
