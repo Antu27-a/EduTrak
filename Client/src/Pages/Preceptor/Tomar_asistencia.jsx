@@ -1,4 +1,6 @@
-import { useState } from "react"
+"use client"
+
+import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import { Users, Calendar, Mail, Check, X, AlertCircle, History, Send, BookOpen } from "lucide-react"
 import Table from "../../components/ui/Table"
@@ -12,15 +14,53 @@ export default function TomarAsistencia() {
     const [alert, setAlert] = useState({ isVisible: false, message: "", type: "success" })
     const [modalOpen, setModalOpen] = useState(false)
     const [selectedAlumno, setSelectedAlumno] = useState(null)
+    const [cursoInfo, setCursoInfo] = useState(null)
 
-    // Datos del curso (simulado)
-    const cursoInfo = {
-        id: cursoId || 1,
-        curso: "2°",
-        division: "2",
-        turno: "Mañana",
-        cantidadAlumnos: 5,
+    const cursosDB = {
+        1: { id: 1, curso: "2°", division: "2", turno: "Mañana", cantidadAlumnos: 5 },
+        2: { id: 2, curso: "3°", division: "8", turno: "Tarde", cantidadAlumnos: 6 },
+        3: { id: 3, curso: "4°", division: "1", turno: "Mañana", cantidadAlumnos: 4 },
+        4: { id: 4, curso: "5°", division: "3", turno: "Tarde", cantidadAlumnos: 5 },
     }
+
+    const alumnosPorCurso = {
+        1: [
+            { id: 1, nombre: "Juan", apellido: "García", email: "juan.garcia@gmail.com", estado: null, faltas: 2 },
+            { id: 2, nombre: "María", apellido: "López", email: "maria.lopez@gmail.com", estado: null, faltas: 5 },
+            { id: 3, nombre: "Carlos", apellido: "Martínez", email: "carlos.martinez@gmail.com", estado: null, faltas: 1 },
+            { id: 4, nombre: "Ana", apellido: "Rodríguez", email: "ana.rodriguez@gmail.com", estado: null, faltas: 8 },
+            { id: 5, nombre: "Pedro", apellido: "Fernández", email: "pedro.fernandez@gmail.com", estado: null, faltas: 3 },
+        ],
+        2: [
+            { id: 1, nombre: "Lucía", apellido: "Gómez", email: "lucia.gomez@gmail.com", estado: null, faltas: 1 },
+            { id: 2, nombre: "Diego", apellido: "Sánchez", email: "diego.sanchez@gmail.com", estado: null, faltas: 4 },
+            { id: 3, nombre: "Sofía", apellido: "Díaz", email: "sofia.diaz@gmail.com", estado: null, faltas: 0 },
+            { id: 4, nombre: "Mateo", apellido: "Torres", email: "mateo.torres@gmail.com", estado: null, faltas: 6 },
+            { id: 5, nombre: "Valentina", apellido: "Ruiz", email: "valentina.ruiz@gmail.com", estado: null, faltas: 2 },
+            { id: 6, nombre: "Tomás", apellido: "Flores", email: "tomas.flores@gmail.com", estado: null, faltas: 3 },
+        ],
+        3: [
+            { id: 1, nombre: "Martín", apellido: "Herrera", email: "martin.herrera@gmail.com", estado: null, faltas: 0 },
+            { id: 2, nombre: "Camila", apellido: "Castro", email: "camila.castro@gmail.com", estado: null, faltas: 2 },
+            { id: 3, nombre: "Nicolás", apellido: "Moreno", email: "nicolas.moreno@gmail.com", estado: null, faltas: 7 },
+            { id: 4, nombre: "Isabella", apellido: "Vargas", email: "isabella.vargas@gmail.com", estado: null, faltas: 1 },
+        ],
+        4: [
+            { id: 1, nombre: "Benjamín", apellido: "Mendoza", email: "benjamin.mendoza@gmail.com", estado: null, faltas: 3 },
+            { id: 2, nombre: "Emma", apellido: "Rojas", email: "emma.rojas@gmail.com", estado: null, faltas: 0 },
+            { id: 3, nombre: "Joaquín", apellido: "Silva", email: "joaquin.silva@gmail.com", estado: null, faltas: 5 },
+            { id: 4, nombre: "Mía", apellido: "Ortiz", email: "mia.ortiz@gmail.com", estado: null, faltas: 2 },
+            { id: 5, nombre: "Santiago", apellido: "Reyes", email: "santiago.reyes@gmail.com", estado: null, faltas: 4 },
+        ],
+    }
+
+    const [alumnos, setAlumnos] = useState([])
+
+    useEffect(() => {
+        const id = Number.parseInt(cursoId) || 1
+        setCursoInfo(cursosDB[id] || cursosDB[1])
+        setAlumnos(alumnosPorCurso[id] || alumnosPorCurso[1])
+    }, [cursoId])
 
     const fechaHoy = new Date().toLocaleDateString("es-AR", {
         weekday: "long",
@@ -29,19 +69,10 @@ export default function TomarAsistencia() {
         day: "numeric",
     })
 
-    const [alumnos, setAlumnos] = useState([
-        { id: 1, nombre: "García", apellido: "Juan", email: "juan.garcia@gmail.com", estado: null, faltas: 2 },
-        { id: 2, nombre: "López", apellido: "María", email: "maria.lopez@gmail.com", estado: null, faltas: 5 },
-        { id: 3, nombre: "Martínez", apellido: "Carlos", email: "carlos.martinez@gmail.com", estado: null, faltas: 1 },
-        { id: 4, nombre: "Rodríguez", apellido: "Ana", email: "ana.rodriguez@gmail.com", estado: null, faltas: 8 },
-        { id: 5, nombre: "Fernández", apellido: "Pedro", email: "pedro.fernandez@gmail.com", estado: null, faltas: 3 },
-    ])
-
     const handleEstadoChange = (alumnoId, nuevoEstado) => {
         setAlumnos((prev) =>
             prev.map((alumno) => {
                 if (alumno.id === alumnoId) {
-                    // Solo sumar falta si cambia A ausente y NO venía de ausente
                     const sumarFalta = nuevoEstado === "ausente" && alumno.estado !== "ausente"
                     return {
                         ...alumno,
@@ -86,19 +117,6 @@ export default function TomarAsistencia() {
     }
 
     const columns = ["Alumno", "Fecha", "Estado", "Email", "Faltas", "Notificar"]
-
-    const getEstadoClass = (estado) => {
-        switch (estado) {
-            case "presente":
-                return "estado-presente"
-            case "ausente":
-                return "estado-ausente"
-            case "justificado":
-                return "estado-justificado"
-            default:
-                return ""
-        }
-    }
 
     const renderRow = (alumno, index) => (
         <tr key={alumno.id}>
@@ -169,6 +187,10 @@ export default function TomarAsistencia() {
         </tr>
     )
 
+    if (!cursoInfo) {
+        return <div className="tomar-asistencia-page">Cargando...</div>
+    }
+
     return (
         <div className="tomar-asistencia-page">
             <Alert
@@ -190,12 +212,11 @@ export default function TomarAsistencia() {
                         <span className="turno-badge">Turno {cursoInfo.turno}</span>
                         <span className="alumnos-badge">
                             <Users size={16} />
-                            {cursoInfo.cantidadAlumnos} alumnos
+                            {alumnos.length} alumnos
                         </span>
                     </div>
                 </div>
                 <div className="header-actions">
-                    {/* Botón para ir al historial */}
                     <Link to={`/preceptor/historial/${cursoId || 1}`} className="btn-historial">
                         <History size={20} />
                         <span>Ver Historial</span>

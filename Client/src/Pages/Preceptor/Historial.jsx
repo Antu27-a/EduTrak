@@ -95,10 +95,10 @@ export default function Historial() {
                         </div>
                     </div>
                 </div>
-                <button className="btn-export">
+                {/* <button className="btn-export">
                     <Download size={18} />
                     <span>Exportar</span>
-                </button>
+                </button> */}
             </div>
 
             <div className="stats-row">
