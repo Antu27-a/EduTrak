@@ -6,8 +6,10 @@ require('dotenv').config()
 const PORT=process.env.PORT||5000
 
 App.use(Express.json())
+const cors=require('cors')
+App.use(cors())
 
-const Router=require('./src/Router/Login.Router')
+const Router=require('./src/Router/Login.Routes')
 
 App.use('/api',Router)
 
