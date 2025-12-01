@@ -19,13 +19,14 @@ export default function Sidebar() {
         <aside className="sidebar">
             <div className="sidebar-header">
                 <div className="logo">
-                    <GraduationCap size={32} />
+                    <img src=".s/assets/img/EDU-TRAK-LOGO.png" alt="EduTrak Logo" className="logo-img" />
                     <div className="logo-text">
                         <h2>EduTrak</h2>
                         <span>Panel Admin</span>
                     </div>
                 </div>
             </div>
+
 
             <nav className="sidebar-nav">
                 {menuItems.map((item) => (

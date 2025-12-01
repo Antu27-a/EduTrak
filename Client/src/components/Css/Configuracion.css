@@ -1,9 +1,19 @@
 .configuracion-container {
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  /* columna para header arriba y tarjeta abajo */
+  gap: 20px;
+  align-items: center;
+  align-content: center;
+
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .configuracion-header {
-  margin-bottom: 30px;
+  align-self: flex-start;
+  margin-bottom: 10px;
 }
 
 .configuracion-header h1 {
@@ -14,11 +24,12 @@
 
 .configuracion-header p {
   color: #666;
-  font-size: 14px;
+  font-size: 19px;
 }
 
 .configuracion-content {
   max-width: 500px;
+   margin: 0 auto; 
 }
 
 .password-card {
@@ -50,8 +61,8 @@
 }
 
 .password-card .card-header p {
-  font-size: 13px;
-  color: #888;
+  font-size: 16px;
+  color: #ffffff;
 }
 
 .password-form {
@@ -106,7 +117,8 @@
 
 .toggle-password {
   position: absolute;
-  right: 12px;
+  bottom: 24px;
+  right: 18px;
   background: none;
   border: none;
   cursor: pointer;

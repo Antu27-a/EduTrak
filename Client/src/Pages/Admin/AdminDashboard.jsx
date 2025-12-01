@@ -7,7 +7,7 @@ export default function AdminDashboard() {
             <Sidebar />
             <main
                 style={{
-                    marginLeft: "260px",
+                    
                     padding: "32px",
                     width: "100%",
                     minHeight: "100vh",
@@ -15,7 +15,7 @@ export default function AdminDashboard() {
                 }}
             >
                 <h1 style={{ fontSize: "28px", fontWeight: "700", color: "#07454e", marginBottom: "8px" }}>Dashboard</h1>
-                <p style={{ color: "#666", marginBottom: "32px" }}>Bienvenido al panel de administración</p>
+                <p style={{ color: "#666", marginBottom: "32px",fontSize: "19px" }}>Bienvenido al panel de administración</p>
 
                 <div
                     style={{
@@ -40,7 +40,7 @@ export default function AdminDashboard() {
                                 borderLeft: `4px solid ${card.color}`,
                             }}
                         >
-                            <p style={{ color: "#666", fontSize: "14px", marginBottom: "8px" }}>{card.title}</p>
+                            <p style={{ color: "#666", fontSize: "17px", marginBottom: "8px" }}>{card.title}</p>
                             <p style={{ fontSize: "32px", fontWeight: "700", color: card.color }}>{card.value}</p>
                         </div>
                     ))}
